@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>OP CITY | آمار سرور</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <nav class="navbar">
+
+        <div class="nav-container">
+
+            <a href="index.html" class="logo">
+                OP CITY
+            </a>
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="index.html">
+                        خانه
+                    </a>
+                </li>
+
+                <li>
+                    <a href="stats.html">
+                        آمار سرور
+                    </a>
+                </li>
+
+                <li>
+                    <a href="shop.html">
+                        فروشگاه
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         PAGE HEADER
+    ========================== -->
+
+    <header class="page-header">
+
+        <div class="container">
+
+            <div class="hero-badge">
+                📊 OP CITY STATUS
+            </div>
+
+            <h1>
+                آمار سرور
+            </h1>
+
+            <p>
+                وضعیت لحظه‌ای سرور OP CITY
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         STATS
+    ========================== -->
+
+    <main>
+
+        <section class="section">
+
+            <div class="container">
+
+                <div class="stats-grid">
+
+
+                    <!-- STATUS -->
+
+                    <div class="stat-card">
+
+                        <h3>
+                            وضعیت سرور
+                        </h3>
+
+                        <strong id="serverStatus">
+                            در حال بررسی...
+                        </strong>
+
+                    </div>
+
+
+                    <!-- PLAYERS -->
+
+                    <div class="stat-card">
+
+                        <h3>
+                            بازیکنان آنلاین
+                        </h3>
+
+                        <strong id="players">
+                            --
+                        </strong>
+
+                    </div>
+
+
+                    <!-- IP -->
+
+                    <div class="stat-card">
+
+                        <h3>
+                            IP سرور
+                        </h3>
+
+                        <strong>
+                            opcity.pfmc.ir
+                        </strong>
+
+                    </div>
+
+
+                    <!-- PLATFORM -->
+
+                    <div class="stat-card">
+
+                        <h3>
+                            پلتفرم
+                        </h3>
+
+                        <strong>
+                            Minecraft
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SERVER INFORMATION
+        ========================== -->
+
+        <section class="section">
+
+            <div class="container">
+
+                <div class="section-title">
+
+                    <h2>
+                        اطلاعات اتصال
+                    </h2>
+
+                    <p>
+                        اطلاعات سرور OP CITY
+                    </p>
+
+                </div>
+
+
+                <div class="server-info">
+
+
+                    <!-- IP -->
+
+                    <div class="info-row">
+
+                        <span class="info-label">
+                            آدرس سرور
+                        </span>
+
+                        <span class="info-value">
+                            opcity.pfmc.ir
+                        </span>
+
+                    </div>
+
+
+                    <!-- STATUS -->
+
+                    <div class="info-row">
+
+                        <span class="info-label">
+                            وضعیت
+                        </span>
+
+                        <span
+                            class="info-value"
+                            id="statusText">
+
+                            در حال بررسی...
+
+                        </span>
+
+                    </div>
+
+
+                    <!-- PLAYERS -->
+
+                    <div class="info-row">
+
+                        <span class="info-label">
+                            بازیکنان
+                        </span>
+
+                        <span
+                            class="info-value"
+                            id="playersInfo">
+
+                            --
+
+                        </span>
+
+                    </div>
+
+
+                    <!-- LAST CHECK -->
+
+                    <div class="info-row">
+
+                        <span class="info-label">
+                            آخرین بررسی
+                        </span>
+
+                        <span
+                            class="info-value"
+                            id="lastCheck">
+
+                            --
+
+                        </span>
+
+                    </div>
+
+
+                    <!-- COPY -->
+
+                    <div class="info-row">
+
+                        <span class="info-label">
+                            اتصال سریع
+                        </span>
+
+                        <button
+                            class="copy-btn"
+                            onclick="copyIP()">
+
+                            📋 کپی IP
+
+                        </button>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-logo">
+                OP CITY
+            </div>
+
+            <p>
+                © 2026 OP CITY — تمامی حقوق محفوظ است.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

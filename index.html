@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>OP CITY | Minecraft Server</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <nav class="navbar">
+
+        <div class="nav-container">
+
+            <a href="index.html" class="logo">
+                OP CITY
+            </a>
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="index.html">
+                        خانه
+                    </a>
+                </li>
+
+                <li>
+                    <a href="stats.html">
+                        آمار سرور
+                    </a>
+                </li>
+
+                <li>
+                    <a href="shop.html">
+                        فروشگاه
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+                ⚡ MINECRAFT SERVER
+            </div>
+
+            <h1>
+                OP CITY
+            </h1>
+
+            <div class="hero-subtitle">
+                سرور حرفه‌ای ماینکرفت
+            </div>
+
+            <p class="hero-description">
+                به OP CITY خوش آمدید!
+                وارد یک سرور متفاوت Minecraft شوید،
+                با دوستان خود بازی کنید و از امکانات
+                ویژه سرور لذت ببرید.
+            </p>
+
+
+            <!-- IP -->
+
+            <div class="ip-box">
+
+                <span class="ip-label">
+                    IP سرور
+                </span>
+
+                <span class="ip-address">
+                    opcity.pfmc.ir
+                </span>
+
+                <button
+                    class="copy-btn"
+                    onclick="copyIP()">
+
+                    کپی IP
+
+                </button>
+
+            </div>
+
+
+            <!-- BUTTONS -->
+
+            <div class="hero-buttons">
+
+                <a
+                    href="stats.html"
+                    class="btn btn-primary">
+
+                    📊 وضعیت سرور
+
+                </a>
+
+                <a
+                    href="shop.html"
+                    class="btn btn-secondary">
+
+                    🛒 فروشگاه
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         FEATURES
+    ========================== -->
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>
+                    امکانات OP CITY
+                </h2>
+
+                <p>
+                    چیزهایی که در سرور منتظر شماست
+                </p>
+
+            </div>
+
+
+            <div class="features">
+
+
+                <!-- PvP -->
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        ⚔️
+                    </div>
+
+                    <h3>
+                        PvP
+                    </h3>
+
+                    <p>
+                        مبارزه‌های هیجان‌انگیز و
+                        رقابت با بازیکنان دیگر.
+                    </p>
+
+                </div>
+
+
+                <!-- Ranks -->
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        👑
+                    </div>
+
+                    <h3>
+                        رنک‌ها
+                    </h3>
+
+                    <p>
+                        رنک‌های ویژه و امکانات
+                        اختصاصی برای بازیکنان.
+                    </p>
+
+                </div>
+
+
+                <!-- Shop -->
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        🛒
+                    </div>
+
+                    <h3>
+                        فروشگاه
+                    </h3>
+
+                    <p>
+                        خرید رنک‌ها و امکانات ویژه
+                        از فروشگاه OP CITY.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SERVER INFO
+    ========================== -->
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>
+                    اطلاعات سرور
+                </h2>
+
+                <p>
+                    آماده ورود به OP CITY هستی؟
+                </p>
+
+            </div>
+
+
+            <div class="server-info">
+
+                <div class="info-row">
+
+                    <span class="info-label">
+                        آدرس سرور
+                    </span>
+
+                    <span class="info-value">
+                        opcity.pfmc.ir
+                    </span>
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <span class="info-label">
+                        نسخه
+                    </span>
+
+                    <span class="info-value">
+                        Minecraft
+                    </span>
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <span class="info-label">
+                        نوع سرور
+                    </span>
+
+                    <span class="info-value">
+                        PvP / Survival
+                    </span>
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <span class="info-label">
+                        وضعیت
+                    </span>
+
+                    <span
+                        class="info-value"
+                        id="statusText">
+
+                        در حال بررسی...
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-logo">
+                OP CITY
+            </div>
+
+            <p>
+                © 2026 OP CITY — تمامی حقوق محفوظ است.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
