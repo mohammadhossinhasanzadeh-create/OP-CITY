@@ -11,12 +11,7 @@
 
 <body>
 
-    <!-- =========================
-         NAVBAR
-    ========================== -->
-
     <nav class="navbar">
-
         <div class="nav-container">
 
             <a href="index.html" class="logo">
@@ -24,35 +19,22 @@
             </a>
 
             <ul class="nav-links">
-
                 <li>
-                    <a href="index.html">
-                        خانه
-                    </a>
+                    <a href="index.html">خانه</a>
                 </li>
 
                 <li>
-                    <a href="stats.html">
-                        آمار سرور
-                    </a>
+                    <a href="stats.html">آمار سرور</a>
                 </li>
 
                 <li>
-                    <a href="shop.html">
-                        فروشگاه
-                    </a>
+                    <a href="shop.html" class="active">فروشگاه</a>
                 </li>
-
             </ul>
 
         </div>
-
     </nav>
 
-
-    <!-- =========================
-         PAGE HEADER
-    ========================== -->
 
     <header class="page-header">
 
@@ -63,11 +45,11 @@
             </div>
 
             <h1>
-                فروشگاه
+                فروشگاه OP CITY
             </h1>
 
             <p>
-                رنک‌ها و امکانات ویژه OP CITY
+                رنک‌ها و امکانات ویژه برای بازیکنان
             </p>
 
         </div>
@@ -75,20 +57,31 @@
     </header>
 
 
-    <!-- =========================
-         SHOP
-    ========================== -->
-
     <main>
+
+        <!-- SHOP -->
 
         <section class="section">
 
             <div class="container">
 
+                <div class="section-title">
+
+                    <h2>
+                        محصولات فروشگاه
+                    </h2>
+
+                    <p>
+                        محصول مورد نظر خود را انتخاب کنید
+                    </p>
+
+                </div>
+
+
                 <div class="shop-grid">
 
 
-                    <!-- VIP -->
+                    <!-- PLUS -->
 
                     <div class="product-card">
 
@@ -97,120 +90,84 @@
                         </div>
 
                         <h3>
-                            VIP
+                            PLUS
                         </h3>
 
                         <p>
-                            دریافت امکانات ویژه VIP و دسترسی
-                            به قابلیت‌های بیشتر.
+                            رنک PLUS برای بازیکنان OP CITY با امکانات ویژه.
                         </p>
 
                         <div class="product-price">
-                            تماس با مدیریت
+                            ۵۰٬۰۰۰ تومان
                         </div>
 
                         <button
                             class="product-button"
-                            onclick="buyProduct('VIP')">
-
-                            خرید VIP
-
+                            onclick="buyProduct('PLUS', 50000)"
+                        >
+                            🛒 خرید PLUS
                         </button>
 
                     </div>
 
 
-                    <!-- VIP+ -->
+
+                    <!-- FRIEND+ -->
 
                     <div class="product-card">
 
                         <div class="product-icon">
-                            💎
+                            🤝
                         </div>
 
                         <h3>
-                            VIP+
+                            FRIEND+
                         </h3>
 
                         <p>
-                            امکانات بیشتر برای بازیکنان
-                            حرفه‌ای سرور.
+                            رنک FRIEND+ با امکانات ویژه برای بازیکنان.
                         </p>
 
                         <div class="product-price">
-                            تماس با مدیریت
+                            ۱۵۰٬۰۰۰ تومان
                         </div>
 
                         <button
                             class="product-button"
-                            onclick="buyProduct('VIP+')">
-
-                            خرید VIP+
-
+                            onclick="buyProduct('FRIEND+', 150000)"
+                        >
+                            🛒 خرید FRIEND+
                         </button>
 
                     </div>
 
 
-                    <!-- LEGEND -->
+
+                    <!-- SHARD -->
 
                     <div class="product-card">
 
                         <div class="product-icon">
-                            👑
+                            💠
                         </div>
 
                         <h3>
-                            LEGEND
+                            SHARD
                         </h3>
 
                         <p>
-                            یک رنک قدرتمند برای بازیکنان
-                            حرفه‌ای.
+                            بسته ۵۰۰ عدد SHARD برای استفاده در سرور.
                         </p>
 
                         <div class="product-price">
-                            تماس با مدیریت
+                            ۷۵٬۰۰۰ تومان
                         </div>
 
                         <button
                             class="product-button"
-                            onclick="buyProduct('LEGEND')">
-
-                            خرید LEGEND
-
-                        </button>
-
-                    </div>
-
-
-                    <!-- COINS -->
-
-                    <div class="product-card">
-
-                        <div class="product-icon">
-                            🪙
-                        </div>
-
-                        <h3>
-                            COINS
-                        </h3>
-
-                        <p>
-                            خرید سکه برای استفاده در امکانات
-                            مختلف سرور.
-                        </p>
-
-                        <div class="product-price">
-                            به‌زودی
-                        </div>
-
-                        <button
-                            class="product-button"
-                            onclick="buyProduct('COINS')">
-
-                            به‌زودی
-
+                            onclick="buyProduct('SHARD - 500 عدد', 75000)"
+                        >
+                            🛒 خرید ۵۰۰ SHARD
                         </button>
 
                     </div>
@@ -222,12 +179,385 @@
 
         </section>
 
+
+
+        <!-- ORDER SECTION -->
+
+        <section
+            class="section"
+            id="orderSection"
+            style="display:none;"
+        >
+
+            <div class="container">
+
+                <div class="section-title">
+
+                    <div class="hero-badge">
+                        🧾 ORDER
+                    </div>
+
+                    <h2>
+                        ثبت سفارش
+                    </h2>
+
+                    <p>
+                        اطلاعات خود را با دقت وارد کنید
+                    </p>
+
+                </div>
+
+
+                <div class="server-info">
+
+
+                    <form
+                        id="orderForm"
+                        enctype="multipart/form-data"
+                    >
+
+
+                        <!-- WEB3FORMS -->
+
+                        <input
+                            type="hidden"
+                            name="access_key"
+                            value="5f0692cf-3c7c-4ac9-913f-0cd557dce42e"
+                        >
+
+                        <input
+                            type="hidden"
+                            name="subject"
+                            value="🛒 سفارش جدید OP CITY"
+                        >
+
+                        <input
+                            type="hidden"
+                            name="from_name"
+                            value="OP CITY SHOP"
+                        >
+
+
+                        <!-- PRODUCT -->
+
+                        <input
+                            type="hidden"
+                            name="محصول"
+                            id="selectedProduct"
+                        >
+
+
+                        <!-- PRICE -->
+
+                        <input
+                            type="hidden"
+                            name="مبلغ"
+                            id="selectedPrice"
+                        >
+
+
+
+                        <!-- SELECTED PRODUCT -->
+
+                        <div class="info-row">
+
+                            <span class="info-label">
+                                محصول
+                            </span>
+
+                            <span
+                                class="info-value"
+                                id="productDisplay"
+                            >
+                                -
+                            </span>
+
+                        </div>
+
+
+
+                        <!-- PRICE -->
+
+                        <div class="info-row">
+
+                            <span class="info-label">
+                                مبلغ
+                            </span>
+
+                            <span
+                                class="info-value"
+                                id="priceDisplay"
+                            >
+                                -
+                            </span>
+
+                        </div>
+
+
+
+                        <!-- MINECRAFT USERNAME -->
+
+                        <div style="margin-top:25px;">
+
+                            <label for="minecraftUsername">
+
+                                👤 نام Minecraft
+
+                            </label>
+
+
+                            <input
+                                type="text"
+                                id="minecraftUsername"
+                                name="نام Minecraft"
+                                placeholder="مثلاً Steve"
+                                maxlength="32"
+                                required
+
+                                style="
+                                    width:100%;
+                                    margin-top:8px;
+                                    padding:15px;
+                                    border-radius:12px;
+                                    border:1px solid rgba(0,255,255,.25);
+                                    background:rgba(0,0,0,.40);
+                                    color:white;
+                                    font-size:16px;
+                                    box-sizing:border-box;
+                                    outline:none;
+                                "
+                            >
+
+                        </div>
+
+
+
+                        <!-- PHONE -->
+
+                        <div style="margin-top:20px;">
+
+                            <label for="phone">
+
+                                📱 شماره تماس
+
+                            </label>
+
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="شماره تماس"
+                                placeholder="شماره تماس"
+                                required
+
+                                style="
+                                    width:100%;
+                                    margin-top:8px;
+                                    padding:15px;
+                                    border-radius:12px;
+                                    border:1px solid rgba(0,255,255,.25);
+                                    background:rgba(0,0,0,.40);
+                                    color:white;
+                                    font-size:16px;
+                                    box-sizing:border-box;
+                                    outline:none;
+                                "
+                            >
+
+                        </div>
+
+
+
+                        <!-- TRANSACTION -->
+
+                        <div style="margin-top:20px;">
+
+                            <label for="transaction">
+
+                                🔢 شماره پیگیری تراکنش
+
+                            </label>
+
+
+                            <input
+                                type="text"
+                                id="transaction"
+                                name="شماره پیگیری"
+                                placeholder="شماره پیگیری پرداخت"
+                                required
+
+                                style="
+                                    width:100%;
+                                    margin-top:8px;
+                                    padding:15px;
+                                    border-radius:12px;
+                                    border:1px solid rgba(0,255,255,.25);
+                                    background:rgba(0,0,0,.40);
+                                    color:white;
+                                    font-size:16px;
+                                    box-sizing:border-box;
+                                    outline:none;
+                                "
+                            >
+
+                        </div>
+
+
+
+                        <!-- MESSAGE -->
+
+                        <div style="margin-top:20px;">
+
+                            <label for="message">
+
+                                📝 توضیحات
+
+                            </label>
+
+
+                            <textarea
+                                id="message"
+                                name="توضیحات"
+                                rows="4"
+                                placeholder="توضیحات اضافی درباره سفارش..."
+
+                                style="
+                                    width:100%;
+                                    margin-top:8px;
+                                    padding:15px;
+                                    border-radius:12px;
+                                    border:1px solid rgba(0,255,255,.25);
+                                    background:rgba(0,0,0,.40);
+                                    color:white;
+                                    font-size:16px;
+                                    box-sizing:border-box;
+                                    resize:vertical;
+                                    outline:none;
+                                "
+                            ></textarea>
+
+                        </div>
+
+
+
+                        <!-- RECEIPT -->
+
+                        <div style="margin-top:20px;">
+
+                            <label for="receipt">
+
+                                🧾 رسید پرداخت
+
+                            </label>
+
+
+                            <input
+                                type="file"
+                                id="receipt"
+                                name="رسید پرداخت"
+                                accept="image/*"
+                                required
+
+                                style="
+                                    width:100%;
+                                    margin-top:8px;
+                                    padding:12px;
+                                    border-radius:12px;
+                                    background:rgba(0,0,0,.40);
+                                    color:white;
+                                    box-sizing:border-box;
+                                "
+                            >
+
+                        </div>
+
+
+
+                        <!-- PAYMENT -->
+
+                        <div
+                            style="
+                                margin-top:25px;
+                                padding:20px;
+                                border-radius:16px;
+                                background:linear-gradient(
+                                    135deg,
+                                    rgba(0,255,255,.08),
+                                    rgba(0,100,255,.08)
+                                );
+                                border:1px solid rgba(0,255,255,.18);
+                            "
+                        >
+
+                            <h3 style="margin-top:0;">
+                                💳 روش پرداخت
+                            </h3>
+
+                            <p>
+                                اطلاعات پرداخت در حال آماده‌سازی است.
+                            </p>
+
+                            <p style="margin-bottom:0;">
+                                پس از فعال شدن پرداخت،
+                                اطلاعات لازم در همین بخش نمایش داده می‌شود.
+                            </p>
+
+                        </div>
+
+
+
+                        <!-- SUBMIT -->
+
+                        <button
+                            type="submit"
+                            class="product-button"
+                            id="submitOrder"
+                            style="margin-top:25px;"
+                        >
+                            📤 ارسال سفارش
+                        </button>
+
+
+
+                        <!-- BACK -->
+
+                        <button
+                            type="button"
+                            class="copy-btn"
+                            onclick="closeOrder()"
+                            style="margin-top:12px;"
+                        >
+                            ↩️ برگشت به فروشگاه
+                        </button>
+
+
+
+                        <!-- MESSAGE -->
+
+                        <div
+                            id="formMessage"
+                            style="
+                                margin-top:20px;
+                                text-align:center;
+                                font-weight:bold;
+                                line-height:1.8;
+                            "
+                        ></div>
+
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+
     </main>
 
 
-    <!-- =========================
-         FOOTER
-    ========================== -->
+
+    <!-- FOOTER -->
 
     <footer>
 
@@ -245,8 +575,6 @@
 
     </footer>
 
-
-    <!-- JAVASCRIPT -->
 
     <script src="script.js"></script>
 
