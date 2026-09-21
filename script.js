@@ -1,558 +1,513 @@
-const SERVER_IP = "opcity.pfmc.ir";
-
-const WEB3FORMS_URL = "https://api.web3forms.com/submit";
+const API_BASE = "https://little-oranges-stay.loca.lt";
 
 
-function copyIP() {
+// =====================================================
+// OP CITY SERVER STATUS
+// =====================================================
 
-    navigator.clipboard.writeText(SERVER_IP)
+const SERVER_API =
+    "https://api.mcstatus.io/v2/status/java/opcity.pfmc.ir";
 
-        .then(() => {
+async function updateServerStatus() {
 
-            alert(
-                "✅ IP سرور کپی شد!\n\n" +
-                SERVER_IP
-            );
-
-        })
-
-        .catch(() => {
-
-            alert(
-                "IP سرور:\n\n" +
-                SERVER_IP
-            );
-
-        });
-
-}
-
-
-
-async function getServerStatus() {
-
-    const status =
+    const statusElement =
         document.getElementById("serverStatus");
 
     const statusText =
         document.getElementById("statusText");
 
-    const players =
+    const playersElement =
         document.getElementById("players");
 
-    const playersInfo =
+    const playersInfoElement =
         document.getElementById("playersInfo");
 
-    const lastCheck =
+    const lastCheckElement =
         document.getElementById("lastCheck");
 
+    if (!statusElement && !statusText && !playersElement) {
+        return;
+    }
 
     try {
 
-        const url =
-            "https://api.mcstatus.io/v2/status/java/" +
-            encodeURIComponent(SERVER_IP);
-
-
-        const response =
-            await fetch(url, {
-                method: "GET",
-                cache: "no-store"
-            });
-
-
-        if (!response.ok) {
-
-            throw new Error(
-                "HTTP Error: " +
-                response.status
-            );
-
-        }
-
-
-        const data =
-            await response.json();
-
-
-        console.log(
-            "OP CITY SERVER:",
-            data
+        const response = await fetch(
+            SERVER_API + "?t=" + Date.now()
         );
 
+        if (!response.ok) {
+            throw new Error("Server API Error");
+        }
+
+        const data = await response.json();
 
         if (data.online === true) {
 
-            if (status) {
-
-                status.textContent =
-                    "آنلاین 🟢";
-
-                status.style.color =
-                    "#00ff88";
-
+            if (statusElement) {
+                statusElement.textContent = "🟢 ONLINE";
             }
-
 
             if (statusText) {
-
-                statusText.textContent =
-                    "آنلاین 🟢";
-
-                statusText.style.color =
-                    "#00ff88";
-
+                statusText.textContent = "سرور آنلاین است";
             }
 
-
-            const online =
+            const onlinePlayers =
                 data.players?.online ?? 0;
 
-            const max =
+            const maxPlayers =
                 data.players?.max ?? 0;
 
-
-            if (players) {
-
-                players.textContent =
-                    `${online} / ${max}`;
-
+            if (playersElement) {
+                playersElement.textContent =
+                    onlinePlayers;
             }
 
-
-            if (playersInfo) {
-
-                playersInfo.textContent =
-                    `${online} / ${max}`;
-
+            if (playersInfoElement) {
+                playersInfoElement.textContent =
+                    `${onlinePlayers} / ${maxPlayers}`;
             }
 
         } else {
 
-            if (status) {
-
-                status.textContent =
-                    "آفلاین 🔴";
-
-                status.style.color =
-                    "#ff4d4d";
-
+            if (statusElement) {
+                statusElement.textContent = "🔴 OFFLINE";
             }
-
 
             if (statusText) {
-
                 statusText.textContent =
-                    "آفلاین 🔴";
-
-                statusText.style.color =
-                    "#ff4d4d";
-
+                    "سرور آفلاین است";
             }
 
-
-            if (players) {
-
-                players.textContent =
-                    "0";
-
+            if (playersElement) {
+                playersElement.textContent = "0";
             }
 
-
-            if (playersInfo) {
-
-                playersInfo.textContent =
-                    "0";
-
+            if (playersInfoElement) {
+                playersInfoElement.textContent = "0 / 0";
             }
-
         }
 
+        if (lastCheckElement) {
 
-        if (lastCheck) {
+            const now = new Date();
 
-            lastCheck.textContent =
-                new Date().toLocaleTimeString("fa-IR");
-
+            lastCheckElement.textContent =
+                "آخرین بررسی: " +
+                now.toLocaleTimeString("fa-IR");
         }
 
     } catch (error) {
 
         console.error(
-            "OP CITY STATUS ERROR:",
+            "Server status error:",
             error
         );
 
-
-        if (status) {
-
-            status.textContent =
-                "خطا در بررسی ⚠️";
-
-            status.style.color =
-                "#ffaa00";
-
+        if (statusElement) {
+            statusElement.textContent =
+                "🟡 UNKNOWN";
         }
-
 
         if (statusText) {
-
             statusText.textContent =
-                "خطا در بررسی ⚠️";
-
-            statusText.style.color =
-                "#ffaa00";
-
+                "بررسی وضعیت سرور ناموفق بود";
         }
 
-
-        if (players) {
-
-            players.textContent =
-                "--";
-
+        if (playersElement) {
+            playersElement.textContent =
+                "?";
         }
 
-
-        if (playersInfo) {
-
-            playersInfo.textContent =
-                "--";
-
+        if (playersInfoElement) {
+            playersInfoElement.textContent =
+                "نامشخص";
         }
-
-
-        if (lastCheck) {
-
-            lastCheck.textContent =
-                new Date().toLocaleTimeString("fa-IR");
-
-        }
-
     }
-
 }
 
 
+// =====================================================
+// COPY IP
+// =====================================================
 
-function buyProduct(product, price) {
+function copyServerIP() {
 
-    const orderSection =
-        document.getElementById("orderSection");
+    const ip =
+        "opcity.pfmc.ir";
 
-    const selectedProduct =
-        document.getElementById("selectedProduct");
+    navigator.clipboard.writeText(ip)
+        .then(() => {
 
-    const selectedPrice =
-        document.getElementById("selectedPrice");
+            alert(
+                "✅ آی‌پی سرور کپی شد:\n" +
+                ip
+            );
 
-    const productDisplay =
-        document.getElementById("productDisplay");
+        })
+        .catch(() => {
 
-    const priceDisplay =
-        document.getElementById("priceDisplay");
-
-
-    if (selectedProduct) {
-
-        selectedProduct.value =
-            product;
-
-    }
-
-
-    if (selectedPrice) {
-
-        selectedPrice.value =
-            Number(price).toLocaleString("fa-IR") +
-            " تومان";
-
-    }
-
-
-    if (productDisplay) {
-
-        productDisplay.textContent =
-            product;
-
-    }
-
-
-    if (priceDisplay) {
-
-        priceDisplay.textContent =
-            Number(price).toLocaleString("fa-IR") +
-            " تومان";
-
-    }
-
-
-    if (orderSection) {
-
-        orderSection.style.display =
-            "block";
-
-
-        orderSection.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
+            alert(
+                "❌ کپی آی‌پی انجام نشد."
+            );
         });
-
-    }
-
 }
 
 
+// =====================================================
+// COPY CARD
+// =====================================================
 
-function closeOrder() {
+function copyCardNumber() {
 
-    const orderSection =
-        document.getElementById("orderSection");
+    const cardNumber =
+        "6219861922871396";
 
+    navigator.clipboard.writeText(cardNumber)
+        .then(() => {
 
-    if (orderSection) {
+            alert(
+                "✅ شماره کارت کپی شد."
+            );
 
-        orderSection.style.display =
-            "none";
+        })
+        .catch(() => {
 
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
+            alert(
+                "❌ کپی شماره کارت انجام نشد."
+            );
         });
-
-    }
-
 }
 
 
+// =====================================================
+// SHOP ORDER
+// =====================================================
 
-async function submitOrder(event) {
+const orderForm =
+    document.getElementById("orderForm");
 
-    event.preventDefault();
+if (orderForm) {
+
+    orderForm.addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+            const result =
+                document.getElementById(
+                    "orderResult"
+                );
+
+            const submitButton =
+                document.getElementById(
+                    "submitOrder"
+                );
+
+            const product =
+                document.getElementById(
+                    "product"
+                ).value;
+
+            const username =
+                document.getElementById(
+                    "minecraft_username"
+                ).value.trim();
+
+            const phone =
+                document.getElementById(
+                    "phone"
+                ).value.trim();
+
+            const transaction =
+                document.getElementById(
+                    "transaction"
+                ).value.trim();
+
+            const message =
+                document.getElementById(
+                    "message"
+                ).value.trim();
+
+            const receiptInput =
+                document.getElementById(
+                    "receipt"
+                );
+
+            if (!product) {
+
+                showOrderResult(
+                    "❌ لطفاً محصول را انتخاب کن.",
+                    false
+                );
+
+                return;
+            }
+
+            if (!username) {
+
+                showOrderResult(
+                    "❌ نام کاربری Minecraft را وارد کن.",
+                    false
+                );
+
+                return;
+            }
+
+            if (!phone) {
+
+                showOrderResult(
+                    "❌ شماره تماس را وارد کن.",
+                    false
+                );
+
+                return;
+            }
+
+            if (!transaction) {
+
+                showOrderResult(
+                    "❌ شماره تراکنش را وارد کن.",
+                    false
+                );
+
+                return;
+            }
+
+            if (
+                !receiptInput.files ||
+                receiptInput.files.length === 0
+            ) {
+
+                showOrderResult(
+                    "❌ لطفاً عکس رسید را انتخاب کن.",
+                    false
+                );
+
+                return;
+            }
+
+            const receipt =
+                receiptInput.files[0];
+
+            const allowedTypes = [
+                "image/jpeg",
+                "image/png",
+                "image/webp"
+            ];
+
+            if (
+                !allowedTypes.includes(
+                    receipt.type
+                )
+            ) {
+
+                showOrderResult(
+                    "❌ فرمت رسید باید JPG، PNG یا WEBP باشد.",
+                    false
+                );
+
+                return;
+            }
+
+            const maxSize =
+                10 * 1024 * 1024;
+
+            if (receipt.size > maxSize) {
+
+                showOrderResult(
+                    "❌ حجم عکس رسید نباید بیشتر از 10MB باشد.",
+                    false
+                );
+
+                return;
+            }
 
 
-    const form =
-        document.getElementById("orderForm");
+            // Disable button
+            submitButton.disabled = true;
 
-    const button =
-        document.getElementById("submitOrder");
-
-    const message =
-        document.getElementById("formMessage");
+            submitButton.textContent =
+                "⏳ در حال ارسال سفارش...";
 
 
-    if (!form) {
+            try {
 
-        return;
+                const formData =
+                    new FormData();
 
-    }
+                formData.append(
+                    "product",
+                    product
+                );
 
+                formData.append(
+                    "minecraft_username",
+                    username
+                );
 
-    const username =
-        document.getElementById(
-            "minecraftUsername"
-        );
+                formData.append(
+                    "phone",
+                    phone
+                );
 
+                formData.append(
+                    "transaction",
+                    transaction
+                );
 
-    const transaction =
-        document.getElementById(
-            "transaction"
-        );
+                formData.append(
+                    "message",
+                    message
+                );
 
-
-    const receipt =
-        document.getElementById(
-            "receipt"
-        );
-
-
-    if (!username.value.trim()) {
-
-        message.textContent =
-            "❌ نام Minecraft را وارد کنید.";
-
-        message.style.color =
-            "#ff4d4d";
-
-        return;
-
-    }
+                formData.append(
+                    "receipt",
+                    receipt
+                );
 
 
-    if (!transaction.value.trim()) {
+                const response =
+                    await fetch(
+                        API_BASE + "/order",
+                        {
+                            method: "POST",
 
-        message.textContent =
-            "❌ شماره پیگیری را وارد کنید.";
+                            headers: {
+                                "bypass-tunnel-reminder": "true"
+                            },
 
-        message.style.color =
-            "#ff4d4d";
-
-        return;
-
-    }
-
-
-    if (!receipt.files.length) {
-
-        message.textContent =
-            "❌ لطفاً تصویر رسید را انتخاب کنید.";
-
-        message.style.color =
-            "#ff4d4d";
-
-        return;
-
-    }
+                            body: formData
+                        }
+                    );
 
 
-    if (button) {
-
-        button.disabled =
-            true;
-
-        button.textContent =
-            "⏳ در حال ارسال سفارش...";
-
-    }
+                const contentType =
+                    response.headers.get(
+                        "content-type"
+                    ) || "";
 
 
-    if (message) {
-
-        message.textContent =
-            "⏳ لطفاً صبر کنید...";
-
-        message.style.color =
-            "#00ffff";
-
-    }
+                let data;
 
 
-    try {
+                if (
+                    contentType.includes(
+                        "application/json"
+                    )
+                ) {
 
-        const formData =
-            new FormData(form);
+                    data =
+                        await response.json();
 
+                } else {
 
-        const response =
-            await fetch(
-                WEB3FORMS_URL,
-                {
-                    method: "POST",
-                    body: formData
+                    const text =
+                        await response.text();
+
+                    throw new Error(
+                        "پاسخ نامعتبر از سرور دریافت شد."
+                    );
                 }
-            );
 
 
-        const result =
-            await response.json();
+                if (!response.ok) {
+
+                    throw new Error(
+                        data.message ||
+                        data.error ||
+                        "ارسال سفارش ناموفق بود."
+                    );
+                }
 
 
-        console.log(
-            "WEB3FORMS RESULT:",
-            result
-        );
+                showOrderResult(
+                    "✅ سفارش با موفقیت ثبت شد!<br>📨 اطلاعات سفارش و رسید برای ادمین ارسال شد.",
+                    true
+                );
 
 
-        if (
-            result.success === true ||
-            result.success === "true"
-        ) {
-
-            message.textContent =
-                "✅ سفارش با موفقیت ارسال شد!\n" +
-                "مدیریت سفارش شما را بررسی خواهد کرد.";
-
-            message.style.color =
-                "#00ff88";
+                orderForm.reset();
 
 
-            form.reset();
+            } catch (error) {
+
+                console.error(
+                    "Order error:",
+                    error
+                );
 
 
-            setTimeout(() => {
+                showOrderResult(
+                    "❌ ارسال سفارش انجام نشد.<br>" +
+                    "لطفاً چند لحظه بعد دوباره تلاش کن.",
+                    false
+                );
 
-                closeOrder();
+            } finally {
 
-                message.textContent = "";
+                submitButton.disabled =
+                    false;
 
-            }, 4000);
-
-        }
-
-        else {
-
-            throw new Error(
-                result.message ||
-                "ارسال ناموفق بود."
-            );
+                submitButton.textContent =
+                    "🚀 ثبت سفارش";
+            }
 
         }
-
-    }
-
-    catch (error) {
-
-        console.error(
-            "ORDER ERROR:",
-            error
-        );
-
-
-        message.textContent =
-            "❌ ارسال سفارش انجام نشد.\n" +
-            "لطفاً دوباره امتحان کنید.";
-
-        message.style.color =
-            "#ff4d4d";
-
-    }
-
-    finally {
-
-        if (button) {
-
-            button.disabled =
-                false;
-
-            button.textContent =
-                "📤 ارسال سفارش";
-
-        }
-
-    }
-
+    );
 }
 
 
+// =====================================================
+// ORDER RESULT
+// =====================================================
+
+function showOrderResult(
+    message,
+    success
+) {
+
+    const result =
+        document.getElementById(
+            "orderResult"
+        );
+
+    if (!result) {
+        return;
+    }
+
+    result.innerHTML =
+        message;
+
+    result.className =
+        success
+            ? "success"
+            : "error";
+
+    result.style.display =
+        "block";
+
+    result.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+}
+
+
+// =====================================================
+// START SERVER STATUS
+// =====================================================
 
 document.addEventListener(
     "DOMContentLoaded",
-    () => {
+    function() {
 
-        getServerStatus();
-
+        updateServerStatus();
 
         setInterval(
-            getServerStatus,
+            updateServerStatus,
             60000
         );
-
-
-        const orderForm =
-            document.getElementById(
-                "orderForm"
-            );
-
-
-        if (orderForm) {
-
-            orderForm.addEventListener(
-                "submit",
-                submitOrder
-            );
-
-        }
 
     }
 );
